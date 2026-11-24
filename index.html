@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Areesha Studio — UI/UX Designer & Full-Stack Developer</title>
+<meta name="description" content="UI/UX design and fast, custom, zero-monthly-fee websites for service businesses, creators and startups.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0D0D0F;--paper:#F4F1EA;--coral:#FF5A36;--mute:#9b978d;--line:rgba(244,241,234,.14);--card:#16161a;--d:'Syne',system-ui,sans-serif;--b:'Inter',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--ink);color:var(--paper);font:400 16px/1.6 var(--b);padding-bottom:84px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+section{padding:clamp(64px,10vw,120px) 0}
+h1,h2,h3{font-family:var(--d);line-height:1.05;letter-spacing:-.02em}
+h2{font-size:clamp(2rem,5vw,3.4rem);margin:10px 0 14px}
+.eyebrow{color:var(--coral);font-size:.8rem;font-weight:600;letter-spacing:.08em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:999px;font-weight:600;font-size:.95rem;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-c{background:var(--coral);color:#fff}.btn-c:hover{background:#ff7050}
+.btn-o{border:1px solid var(--line)}.btn-o:hover{border-color:var(--paper)}
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(13,13,15,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;flex-direction:column;gap:4px;line-height:1}
+.logo b{font:800 1.05rem var(--d);letter-spacing:.04em}
+.logo small{font-size:.66rem;letter-spacing:.14em;color:var(--mute)}
+nav ul{display:flex;gap:28px;list-style:none;font-size:.9rem;color:var(--mute)}
+nav a:hover{color:var(--paper)}
+.status{font-size:.78rem;color:var(--mute);display:flex;align-items:center;gap:8px}
+.status:before{content:"";width:8px;height:8px;border-radius:50%;background:#3ddc84}
+.menu{display:none;padding:10px 0;font-weight:600;font-size:.85rem}
+@media(max-width:860px){.status{display:none}.menu{display:block}
+nav ul{display:none;position:absolute;left:0;right:0;top:68px;background:var(--ink);flex-direction:column;gap:0;padding:8px 20px 20px;border-bottom:1px solid var(--line)}
+nav ul.open{display:flex}nav li a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-size:1.05rem;color:var(--paper)}}
+/* hero */
+.hero{padding:clamp(56px,9vw,120px) 0 clamp(48px,7vw,90px)}
+.hero h1{font-size:clamp(2.6rem,8.5vw,6.6rem);font-weight:800;text-transform:uppercase;max-width:12ch}
+.hero h1 em{font-style:normal;color:var(--coral)}
+.hero p{max-width:560px;color:#cfcbc1;font-size:1.1rem;margin:26px 0 32px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero small{display:block;margin-top:28px;color:var(--mute)}
+/* works */
+.head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:28px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.filters button{padding:9px 18px;border:1px solid var(--line);border-radius:999px;font-size:.85rem;color:var(--mute)}
+.filters button.on{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:border-color .25s,transform .25s}
+.card:hover{border-color:var(--coral);transform:translateY(-4px)}
+.card[hidden]{display:none}
+.thumb{position:relative;display:block;width:100%;aspect-ratio:4/3;background:#101013;cursor:pointer}
+.thumb svg{width:100%;height:100%;display:block}
+.view{position:absolute;right:16px;top:16px;background:var(--paper);color:var(--ink);font-weight:700;font-size:.75rem;padding:8px 14px;border-radius:999px;opacity:0;transform:translateY(-4px);transition:.25s}
+.thumb:hover .view,.thumb:focus-visible .view{opacity:1;transform:none}
+@media(hover:none){.view{opacity:1;transform:none}}
+.info{padding:24px}.info .eyebrow{display:block;margin-bottom:6px}
+.info h3{font-size:1.5rem;margin-bottom:8px}.info p{color:#bdb9ae;font-size:.95rem}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.tags span{font-size:.75rem;border:1px solid var(--line);padding:4px 12px;border-radius:999px;color:var(--mute)}
+.link{color:var(--coral);font-weight:600;font-size:.92rem}.link:hover{text-decoration:underline}
+/* services */
+.svc{border-top:1px solid var(--line)}
+.svc details{border-bottom:1px solid var(--line);padding:22px 0}
+.svc summary{list-style:none;display:flex;gap:20px;align-items:center;cursor:pointer;font:700 clamp(1.2rem,3vw,1.8rem) var(--d)}
+.svc summary::-webkit-details-marker{display:none}
+.svc summary span{color:var(--coral);font:600 .9rem var(--b)}
+.svc summary:after{content:"+";margin-left:auto;font-size:1.6rem;color:var(--coral);transition:transform .25s}
+.svc details[open] summary:after{transform:rotate(45deg)}
+.svc p{color:#bdb9ae;margin:12px 0 0 46px;max-width:560px}
+/* why */
+.why{background:var(--paper);color:var(--ink);padding:clamp(48px,7vw,80px) 0}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-top:28px}
+.pillars div{border-top:2px solid var(--ink);padding-top:16px}
+.pillars h3{font-size:1.25rem;margin-bottom:6px}.pillars p{color:#4a483f;font-size:.95rem}
+.why .eyebrow{color:#d6411f}
+/* packages */
+.pk{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px;margin-top:36px;align-items:stretch}
+.pkg{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px 28px}
+.pkg.pop{border-color:var(--coral);background:linear-gradient(180deg,#1d1512,var(--card))}
+.badge{position:absolute;top:-13px;left:28px;background:var(--coral);color:#fff;font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:999px}
+.pkg h3{font-size:1.35rem}.price{font:800 2.6rem var(--d);margin:14px 0 4px}
+.price small{font:500 .85rem var(--b);color:var(--mute)}
+.pkg>p{color:#bdb9ae;font-size:.93rem;margin:8px 0 18px}
+.pkg ul{list-style:none;display:grid;gap:10px;margin-bottom:28px;flex:1}
+.pkg li{padding-left:24px;position:relative;font-size:.93rem}
+.pkg li:before{content:"✓";position:absolute;left:0;color:var(--coral);font-weight:700}
+.pkg .btn{width:100%}
+.stats{display:flex;flex-wrap:wrap;gap:40px;margin-top:48px;color:var(--mute)}
+.stats b{display:block;font:800 2rem var(--d);color:var(--paper)}
+/* process */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0}
+.tabs button{padding:12px 22px;border:1px solid var(--line);border-radius:999px;font-weight:600;color:var(--mute);transition:.2s}
+.tabs button[aria-selected=true]{background:var(--coral);border-color:var(--coral);color:#fff}
+.panel{display:none;max-width:720px}
+.panel.on{display:block;animation:in .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.panel .n{font:800 clamp(4rem,12vw,8rem) var(--d);color:var(--coral);line-height:.9}
+.panel h3{font-size:1.8rem;margin:14px 0 10px}.panel p{font-size:1.15rem;color:#d4d0c6}
+.bar{height:3px;background:var(--line);max-width:720px;margin-top:36px;border-radius:3px}
+.bar i{display:block;height:100%;background:var(--coral);width:25%;border-radius:3px;transition:width .45s}
+/* contact */
+.contact{text-align:center;border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(2.2rem,7vw,5rem)}.contact .cta{justify-content:center;margin-top:28px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+/* sticky bar */
+.bar2{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 16px calc(10px + env(safe-area-inset-bottom));pointer-events:none}
+.bar2 div{pointer-events:auto;max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;background:rgba(22,22,26,.94);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.bar2 span{font-size:.85rem;color:#d4d0c6}
+.bar2 .btn{padding:11px 20px;font-size:.8rem;white-space:nowrap}
+@media(max-width:520px){.bar2 span{display:none}.bar2 div{padding:6px}.bar2 .btn{width:100%}}
+/* modals */
+.ov{position:fixed;inset:0;z-index:100;background:rgba(5,5,7,.82);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:16px;overflow:auto}
+.ov.on{display:flex}
+.box{position:relative;background:#141417;border:1px solid var(--line);border-radius:22px;width:100%;max-width:480px;padding:32px 28px;animation:in .35s ease;max-height:100%;overflow:auto}
+.box.lg{max-width:980px;padding:0;display:grid;grid-template-columns:1.2fr 1fr}
+@media(max-width:820px){.box.lg{grid-template-columns:1fr}}
+.x{position:absolute;right:14px;top:14px;width:40px;height:40px;border-radius:50%;background:rgba(244,241,234,.1);font-size:1.1rem;z-index:2}
+.x:hover{background:var(--coral)}
+.lbv{background:#101013}.lbv svg{width:100%;height:100%;display:block;max-height:80vh}
+.lbi{padding:36px 30px}.lbi h3{font-size:1.9rem;margin:6px 0 16px}
+.lbi h4{font-size:.8rem;color:var(--coral);letter-spacing:.06em;margin:16px 0 4px}
+.lbi p{color:#cfcbc1;font-size:.95rem}.lbi .btn{margin-top:26px}
+label{display:block;font-size:.82rem;color:var(--mute);margin:16px 0 6px}
+input,select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:var(--ink);color:var(--paper);font:inherit}
+input:focus,select:focus{outline:2px solid var(--coral);border-color:transparent}
+.box form .btn{width:100%;margin-top:24px}
+.box h3{font-size:1.7rem;margin-bottom:6px}.box .sub{color:var(--mute);font-size:.93rem}
+.ok{display:none;text-align:center}.ok .tick{width:64px;height:64px;border-radius:50%;background:var(--coral);display:grid;place-items:center;font-size:1.8rem;margin:0 auto 16px}
+.ok .btn{width:100%;margin-top:12px}.ok p{color:#cfcbc1;margin:8px 0 18px}
+.toast{position:fixed;left:50%;bottom:100px;transform:translate(-50%,20px);background:var(--paper);color:var(--ink);padding:10px 20px;border-radius:999px;font-weight:600;font-size:.9rem;opacity:0;pointer-events:none;transition:.3s;z-index:200}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body id="top">
+
+<header><div class="wrap nav">
+  <a class="logo" href="#top" aria-label="Areesha Studio home"><b>AREESHA STUDIO</b><small>UI/UX &amp; FULL-STACK</small></a>
+  <nav aria-label="Main"><ul id="menu">
+    <li><a href="#works">Works</a></li><li><a href="#services">Services</a></li><li><a href="#packages">Packages</a></li><li><a href="#process">Process</a></li><li><a href="#contact">Contact</a></li>
+  </ul></nav>
+  <span class="status">Open for new website builds</span>
+  <button class="menu" id="mb" aria-expanded="false" aria-controls="menu">MENU ☰</button>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <span class="eyebrow">Crafting digital experiences that convert</span>
+  <h1 style="margin-top:16px">UI/UX designer &amp; <em>full-stack</em> developer.</h1>
+  <p>I design and build fast, custom, zero-monthly-fee websites for service businesses, creators, and startups—delivered in days, not months.</p>
+  <div class="cta"><a class="btn btn-c" href="#works">Explore Selected Works ↓</a><button class="btn btn-o" data-open>Get a Free Website Preview</button></div>
+  <small>behance.net/aradnan2</small>
+</div></section>
+
+<section id="works" style="padding-top:20px"><div class="wrap">
+  <div class="head"><div><span class="eyebrow">Selected works</span><h2>Real projects, real craft.</h2></div><a class="link" href="https://www.behance.net/aradnan2" target="_blank" rel="noopener">View Full Behance ↗</a></div>
+  <div class="filters" role="group" aria-label="Filter projects">
+    <button class="on" data-f="all">All</button><button data-f="app">Mobile Apps</button><button data-f="web">Web &amp; E-commerce</button><button data-f="ux">UI/UX Case Studies</button>
+  </div>
+  <div class="grid" id="grid"></div>
+  <p style="margin-top:36px"><a class="link" href="https://www.behance.net/aradnan2" target="_blank" rel="noopener">See all projects on Behance ↗</a></p>
+</div></section>
+
+<section id="services" class="svc-s" style="padding-top:0"><div class="wrap">
+  <span class="eyebrow">How I can help</span><h2>Services</h2>
+  <div class="svc" style="margin-top:24px">
+    <details><summary><span>01</span>High-Converting Landing Pages</summary><p>Fast, mobile-first one-page websites designed to turn Instagram and Google visitors into paying clients.</p></details>
+    <details><summary><span>02</span>UI/UX Design &amp; Interactive Prototypes</summary><p>Clean, human-centered interfaces, wireframes, and interactive demos before writing production code.</p></details>
+    <details><summary><span>03</span>Full-Stack Web Apps &amp; Custom Tools</summary><p>Self-contained interactive web applications, calculators, and digital products built with clean code.</p></details>
+    <details><summary><span>04</span>Zero-Hosting-Fee Deployment</summary><p>Complete setup on free, fast hosting (GitHub Pages, Netlify, or CodePen) so you never pay $30/month for Wix or Squarespace.</p></details>
+  </div>
+</div></section>
+
+<section class="why"><div class="wrap">
+  <span class="eyebrow">Why work with me</span><h2 style="margin-bottom:0">Three promises before you spend a dollar.</h2>
+  <div class="pillars">
+    <div><h3>Preview Before You Pay</h3><p>See a live working concept of your site before committing.</p></div>
+    <div><h3>Zero Monthly Platform Fees</h3><p>Stop paying $30–$45/month forever for bloated website builders.</p></div>
+    <div><h3>Built for Mobile &amp; Speed</h3><p>Designed thumb-first so Instagram, Google, and WhatsApp traffic converts fast.</p></div>
+  </div>
+</div></section>
+
+<section id="packages"><div class="wrap">
+  <span class="eyebrow">Ways to work together</span><h2>Packages</h2>
+  <p style="color:var(--mute)">One-time prices. No monthly hosting fees. Ever.</p>
+  <div class="pk">
+    <article class="pkg"><h3>Launch Landing Page</h3><div class="price">$79 <small>One-Time</small></div>
+      <p>High-converting custom one-page website built to turn visitors into leads.</p>
+      <ul><li>Custom mobile-first design</li><li>Direct WhatsApp &amp; booking integration</li><li>48-hour express delivery</li><li>$0 monthly hosting setup</li></ul>
+      <button class="btn btn-o" data-open="Launch Landing Page — $79">Book Launch Page →</button></article>
+    <article class="pkg pop"><span class="badge">MOST POPULAR</span><h3>Growth Business Website</h3><div class="price">$149 <small>One-Time</small></div>
+      <p>Complete multi-section brand website engineered to build trust and close clients.</p>
+      <ul><li>Bespoke multi-section UI/UX</li><li>Interactive animations &amp; service showcase</li><li>Client review &amp; FAQ architecture</li><li>Speed &amp; mobile optimization</li><li>$0 monthly hosting setup</li></ul>
+      <button class="btn btn-c" data-open="Growth Business Website — $149">Book Growth Website →</button></article>
+    <article class="pkg"><h3>Custom Web App &amp; Interactive Product</h3><div class="price">$249+ <small>One-Time</small></div>
+      <p>Bespoke UI/UX design + full-stack interactive web tool, calculator, or digital product.</p>
+      <ul><li>End-to-end UI/UX wireframes &amp; prototype</li><li>Full-stack interactive web build</li><li>Custom calculators &amp; client portals</li><li>Clean, self-contained source code</li></ul>
+      <button class="btn btn-o" data-open="Custom Web App & Interactive Product — $249+">Start Custom Project →</button></article>
+  </div>
+  <div class="stats"><div><b>100%</b>Custom code</div><div><b>48–72h</b>Fast delivery</div><div><b>$0</b>Monthly hosting</div></div>
+</div></section>
+
+<section id="process" style="border-top:1px solid var(--line)"><div class="wrap">
+  <span class="eyebrow">How a project runs</span><h2>My process</h2>
+  <div class="tabs" role="tablist" aria-label="Process steps">
+    <button role="tab" id="t0" aria-selected="true" aria-controls="p0">01 Discover</button>
+    <button role="tab" id="t1" aria-selected="false" aria-controls="p1" tabindex="-1">02 Design</button>
+    <button role="tab" id="t2" aria-selected="false" aria-controls="p2" tabindex="-1">03 Build</button>
+    <button role="tab" id="t3" aria-selected="false" aria-controls="p3" tabindex="-1">04 Launch</button>
+  </div>
+  <div class="panel on" role="tabpanel" id="p0" aria-labelledby="t0"><div class="n">01</div><h3>Discover</h3><p>We align on your business goals, target audience, and key conversion action—or I build a free live homepage concept first so you see the vision upfront.</p></div>
+  <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1"><div class="n">02</div><h3>Design</h3><p>I craft a high-contrast, mobile-first UI/UX layout tailored to your brand—engineered for effortless reading, fast scanning, and maximum client trust.</p></div>
+  <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2"><div class="n">03</div><h3>Build</h3><p>I write clean, lightweight, custom full-stack code with smooth micro-interactions, instant WhatsApp/booking triggers, and sub-second load times.</p></div>
+  <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3"><div class="n">04</div><h3>Launch</h3><p>I deploy your site live on fast, SSL-secured hosting with $0 monthly maintenance fees and hand over full ownership of your files.</p></div>
+  <div class="bar"><i id="pb"></i></div>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+  <span class="eyebrow">Ready when you are</span><h2>Let’s build your website.</h2>
+  <div class="cta"><button class="btn btn-c" data-open>Request a Free Demo Preview</button><a class="btn btn-o" href="https://www.behance.net/aradnan2" target="_blank" rel="noopener">Behance Profile ↗</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© Areesha Studio — UI/UX &amp; Full-Stack</span><a href="https://www.behance.net/aradnan2" target="_blank" rel="noopener">behance.net/aradnan2 ↗</a></div></footer>
+
+<div class="bar2"><div><span>Free preview of your website before you pay.</span><button class="btn btn-c" data-open>REQUEST A FREE DEMO PREVIEW</button></div></div>
+
+<div class="ov" id="lb" role="dialog" aria-modal="true" aria-label="Project preview"><div class="box lg">
+  <button class="x" data-close aria-label="Close">✕</button><div class="lbv" id="lbv"></div>
+  <div class="lbi"><span class="eyebrow" id="lbc"></span><h3 id="lbt"></h3><h4>THE PROBLEM</h4><p id="lbp"></p><h4>THE SOLUTION</h4><p id="lbs"></p>
+  <a class="btn btn-c" href="https://www.behance.net/aradnan2" target="_blank" rel="noopener">Open Full Case Study on Behance ↗</a></div>
+</div></div>
+
+<div class="ov" id="rq" role="dialog" aria-modal="true" aria-label="Free demo preview request"><div class="box">
+  <button class="x" data-close aria-label="Close">✕</button>
+  <form id="f">
+    <h3>Free Demo Preview</h3><p class="sub">Tell me about your business and I’ll send a free preview.</p>
+    <label for="bn">Business name</label><input id="bn" required autocomplete="organization">
+    <label for="pk">Selected package</label>
+    <select id="pk"><option>Launch Landing Page — $79</option><option>Growth Business Website — $149</option><option>Custom Web App &amp; Interactive Product — $249+</option></select>
+    <label for="ln">Instagram / Google Maps link</label><input id="ln" required placeholder="https://instagram.com/yourbusiness">
+    <label for="ct">WhatsApp / Email</label><input id="ct" required placeholder="+1 555 000 0000 or you@email.com" autocomplete="email">
+    <button class="btn btn-c" type="submit">Send Request</button>
+  </form>
+  <div class="ok" id="ok"><div class="tick">✓</div><h3>Request Received!</h3><p>I’ll send your custom preview within 24 hours. Want to speed things up? Message me directly.</p>
+    <a class="btn btn-c" id="wa" target="_blank" rel="noopener">Send Directly via WhatsApp</a><button class="btn btn-o" id="cp">Copy Email Address</button></div>
+</div></div>
+<div class="toast" id="ts" role="status" aria-live="polite">Copied!</div>
+
+<script>
+// REPLACE WITH YOUR WHATSAPP NUMBER (country code + number, digits only, e.g. 923001234567)
+const WA_NUMBER = '923000000000';
+// REPLACE WITH YOUR EMAIL ADDRESS
+const EMAIL = 'hello@areeshastudio.com';
+
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const F = 'font-family="Inter,Arial,sans-serif"';
+const phone = inner => `<rect x="96" y="10" width="128" height="220" rx="18" fill="#0D0D0F" stroke="#3a3a42" stroke-width="2"/><rect x="144" y="15" width="32" height="5" rx="2.5" fill="#26262c"/>${inner}`;
+const wrap = inner => `<svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" role="img" ${F}><rect width="320" height="240" fill="#101013"/>${inner}</svg>`;
+
+const M = {
+  fin: wrap(phone(`
+    <text x="108" y="38" font-size="6.5" fill="#8d8a82">Total balance</text>
+    <text x="108" y="56" font-size="17" font-weight="800" fill="#F4F1EA">$12,480.50</text>
+    <text x="108" y="66" font-size="6" fill="#3ddc84">▲ 4.2% this month</text>
+    <path d="M108 112 L124 100 L140 106 L156 88 L172 94 L188 76 L212 82 L212 120 L108 120Z" fill="#FF5A36" opacity=".18"/>
+    <polyline points="108,112 124,100 140,106 156,88 172,94 188,76 212,82" fill="none" stroke="#FF5A36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="108" y="128" width="104" height="30" rx="8" fill="#1b1b20"/><circle cx="121" cy="143" r="6" fill="#FF5A36"/><text x="132" y="141" font-size="6.5" fill="#F4F1EA">Groceries</text><text x="132" y="150" font-size="5.5" fill="#8d8a82">Today</text><text x="205" y="145" font-size="7" text-anchor="end" fill="#F4F1EA">-$84.20</text>
+    <rect x="108" y="162" width="104" height="30" rx="8" fill="#1b1b20"/><circle cx="121" cy="177" r="6" fill="#4cc9f0"/><text x="132" y="175" font-size="6.5" fill="#F4F1EA">Salary</text><text x="132" y="184" font-size="5.5" fill="#8d8a82">Yesterday</text><text x="205" y="179" font-size="7" text-anchor="end" fill="#3ddc84">+$3,200</text>
+    <rect x="108" y="196" width="104" height="26" rx="13" fill="#F4F1EA"/><text x="160" y="212" font-size="7.5" font-weight="700" text-anchor="middle" fill="#0D0D0F">+ Add transaction</text>`)),
+  aura: wrap(phone(`
+    <rect x="97" y="11" width="126" height="218" rx="17" fill="#F4F1EA"/>
+    <text x="108" y="38" font-size="8" font-weight="700" fill="#0D0D0F">Good morning, Aura</text>
+    <circle cx="160" cy="88" r="32" fill="none" stroke="#e3dfd3" stroke-width="8"/>
+    <circle cx="160" cy="88" r="32" fill="none" stroke="#FF5A36" stroke-width="8" stroke-linecap="round" stroke-dasharray="157 201" transform="rotate(-90 160 88)"/>
+    <circle cx="160" cy="88" r="21" fill="none" stroke="#0D0D0F" stroke-width="5" stroke-linecap="round" stroke-dasharray="80 132" transform="rotate(-90 160 88)"/>
+    <text x="160" y="92" font-size="12" font-weight="800" text-anchor="middle" fill="#0D0D0F">78%</text>
+    <text x="160" y="134" font-size="7" text-anchor="middle" fill="#6b685f">14-day streak 🔥</text>
+    ${[0,1,2,3,4,5,6].map(i=>`<circle cx="${121+i*13}" cy="146" r="4.5" fill="${i<5?'#FF5A36':'#e3dfd3'}"/>`).join('')}
+    <rect x="108" y="162" width="48" height="52" rx="10" fill="#0D0D0F"/><text x="116" y="180" font-size="6" fill="#F4F1EA">Energy</text><text x="116" y="198" font-size="12" font-weight="800" fill="#FF5A36">8.4</text>
+    <rect x="164" y="162" width="48" height="52" rx="10" fill="#e3dfd3"/><text x="172" y="180" font-size="6" fill="#0D0D0F">Water</text><text x="172" y="198" font-size="12" font-weight="800" fill="#0D0D0F">6/8</text>`)),
+  shop: wrap(`
+    <rect x="20" y="22" width="280" height="196" rx="10" fill="#0a0a10" stroke="#3a3a42" stroke-width="2"/>
+    <rect x="21" y="23" width="278" height="16" rx="9" fill="#17171d"/><circle cx="32" cy="31" r="2.5" fill="#FF5A36"/><circle cx="41" cy="31" r="2.5" fill="#e8b84a"/><circle cx="50" cy="31" r="2.5" fill="#3ddc84"/>
+    <text x="34" y="54" font-size="7" font-weight="800" fill="#F4F1EA">NEON<tspan fill="#FF5A36">GEAR</tspan></text><text x="246" y="54" font-size="5.5" fill="#8d8a82" text-anchor="end">Shop  Deals  Cart (2)</text>
+    <text x="34" y="86" font-size="14" font-weight="800" fill="#F4F1EA">LEVEL UP</text><text x="34" y="102" font-size="14" font-weight="800" fill="#00e5ff">YOUR SETUP</text>
+    <rect x="34" y="112" width="58" height="16" rx="8" fill="#FF5A36"/><text x="63" y="123" font-size="6.5" font-weight="700" fill="#fff" text-anchor="middle">Shop now</text>
+    <circle cx="238" cy="98" r="34" fill="none" stroke="#00e5ff" stroke-width="2" opacity=".5"/><circle cx="238" cy="98" r="24" fill="#12121a" stroke="#FF5A36" stroke-width="3"/><path d="M222 100a16 16 0 0132 0" fill="none" stroke="#00e5ff" stroke-width="4" stroke-linecap="round"/><rect x="218" y="98" width="8" height="16" rx="3" fill="#00e5ff"/><rect x="250" y="98" width="8" height="16" rx="3" fill="#00e5ff"/>
+    ${[['Headset','$89'],['Keyboard','$119'],['Controller','$59']].map((p,i)=>`<rect x="${34+i*86}" y="146" width="78" height="62" rx="8" fill="#15151d" stroke="#2a2a33"/><rect x="${42+i*86}" y="154" width="62" height="26" rx="5" fill="#1d1d28"/><circle cx="${73+i*86}" cy="167" r="7" fill="none" stroke="${['#FF5A36','#00e5ff','#b388ff'][i]}" stroke-width="2.5"/><text x="${42+i*86}" y="193" font-size="6.5" fill="#F4F1EA">${p[0]}</text><text x="${42+i*86}" y="202" font-size="6.5" font-weight="700" fill="#FF5A36">${p[1]}</text>`).join('')}`),
+  jobs: wrap(`
+    <rect x="18" y="10" width="112" height="220" rx="16" fill="#0D0D0F" stroke="#3a3a42" stroke-width="2"/>
+    <rect x="27" y="30" width="94" height="18" rx="9" fill="#1b1b20"/><text x="38" y="42" font-size="6.5" fill="#8d8a82">🔍 Remote designer…</text>
+    ${[['Product Designer','Remote · $90k'],['React Developer','Remote · $110k'],['UX Researcher','Remote · $85k']].map((j,i)=>`<rect x="27" y="${56+i*48}" width="94" height="42" rx="9" fill="#1b1b20"/><rect x="34" y="${63+i*48}" width="14" height="14" rx="4" fill="${['#FF5A36','#4cc9f0','#b388ff'][i]}"/><text x="54" y="${72+i*48}" font-size="6.5" font-weight="700" fill="#F4F1EA">${j[0]}</text><text x="54" y="${81+i*48}" font-size="5.5" fill="#8d8a82">${j[1]}</text><rect x="34" y="${86+i*48}" width="32" height="8" rx="4" fill="#FF5A36" opacity=".9"/>`).join('')}
+    <text x="150" y="30" font-size="8" font-weight="700" fill="#F4F1EA">UX flow</text>
+    ${['Search','Filter','Job','Apply'].map((s,i)=>`<rect x="150" y="${42+i*44}" width="76" height="26" rx="6" fill="none" stroke="${i==3?'#FF5A36':'#5a5a64'}" stroke-width="1.5" stroke-dasharray="${i==3?'0':'3 2'}"/><text x="188" y="${59+i*44}" font-size="7" text-anchor="middle" fill="#F4F1EA">${s}</text>${i<3?`<path d="M188 ${68+i*44}v14m-3-4l3 4 3-4" stroke="#FF5A36" fill="none" stroke-width="1.4"/>`:''}`).join('')}
+    <rect x="244" y="42" width="58" height="62" rx="6" fill="#16161a" stroke="#2a2a33"/><rect x="250" y="50" width="46" height="5" rx="2" fill="#3a3a42"/><rect x="250" y="60" width="34" height="5" rx="2" fill="#3a3a42"/><rect x="250" y="82" width="46" height="14" rx="5" fill="#FF5A36"/>
+    <text x="244" y="130" font-size="6" fill="#8d8a82">Ideate → Define</text><text x="244" y="140" font-size="6" fill="#8d8a82">→ Prototype</text>`)
+};
+
+const P = [
+  {k:'fin',c:'app',n:'01 / MOBILE APP',t:'Personal Finance Tracker',d:'A dark, focused mobile app UI to track spending effortlessly with clear cards, categories and at-a-glance balances.',tags:['UI Design','Mobile App','Fintech'],pr:'Money apps overwhelm people with tables and jargon, so they stop tracking after a week.',so:'A dark, card-based interface with one clear balance, a trend chart and color-coded categories, so you understand your month in seconds.'},
+  {k:'aura',c:'app',n:'02 / MOBILE APP',t:'Aura App',d:'A wellbeing app for tracking energy and daily habits, with progress streaks, habit reports and a friendly community feed.',tags:['UX Flow','Mobile App','Wellness'],pr:'Habit trackers feel like chores, so users drop off before a routine forms.',so:'Streak rings, gentle wellness cards and weekly habit reports reward consistency and make progress visible every day.'},
+  {k:'shop',c:'web',n:'03 / WEB & E-COMMERCE',t:'Gaming E-Commerce Website',d:'A sleek, responsive store for gamers, designed to make browsing and buying gaming gear simple, fast and fun.',tags:['Web Design','E-commerce','Responsive'],pr:'Gaming stores bury products under noisy layouts, which slows buying decisions.',so:'A neon hero sets the mood, while a clean product grid with clear prices makes browsing and checkout fast on any screen.'},
+  {k:'jobs',c:'ux',n:'04 / UI/UX CASE STUDY',t:'JobsFinder App',d:'A full UI/UX case study, from ideate, define and prototype, for exploring and applying to remote tech jobs with ease.',tags:['Case Study','Prototype','Mobile App'],pr:'Remote job seekers waste hours on cluttered listings and long, confusing application steps.',so:'A tested flow from search to filter to job to apply, with scannable job cards and a one-tap application path.'}
+];
+$('#grid').innerHTML = P.map((p, i) => `<article class="card" data-c="${p.c}">
+  <div class="thumb" tabindex="0" role="button" aria-label="View ${p.t} preview" data-i="${i}">${M[p.k]}<span class="view">VIEW ⤢</span></div>
+  <div class="info"><span class="eyebrow">${p.n}</span><h3>${p.t}</h3><p>${p.d}</p>
+  <div class="tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
+  <a class="link" href="https://www.behance.net/aradnan2" target="_blank" rel="noopener">View on Behance ↗</a></div></article>`).join('');
+
+// filters
+$$('.filters button').forEach(b => b.onclick = () => {
+  $$('.filters button').forEach(x => x.classList.toggle('on', x === b));
+  $$('.card').forEach(c => c.hidden = b.dataset.f !== 'all' && c.dataset.c !== b.dataset.f);
+});
+
+// modals
+let last;
+const open = (el, from) => { last = from || document.activeElement; el.classList.add('on'); document.body.style.overflow = 'hidden'; setTimeout(() => ($('input,select,.x', el) || el).focus(), 50); };
+const closeAll = () => { $$('.ov.on').forEach(o => o.classList.remove('on')); document.body.style.overflow = ''; last && last.focus && last.focus(); };
+$$('.ov').forEach(o => o.addEventListener('click', e => { if (e.target === o || e.target.closest('[data-close]')) closeAll(); }));
+addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+
+const showProject = i => { const p = P[i];
+  $('#lbv').innerHTML = M[p.k]; $('#lbc').textContent = p.n; $('#lbt').textContent = p.t; $('#lbp').textContent = p.pr; $('#lbs').textContent = p.so; open($('#lb')); };
+$$('.thumb').forEach(t => { t.onclick = () => showProject(t.dataset.i); t.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showProject(t.dataset.i); } }; });
+
+$$('[data-open]').forEach(b => b.onclick = () => {
+  const pkg = b.dataset.open;
+  if (pkg) { const s = $('#pk'); const m = [...s.options].find(o => o.text === pkg || o.value === pkg); if (m) s.value = m.value; }
+  $('#f').style.display = 'block'; $('#ok').style.display = 'none'; open($('#rq'), b);
+});
+
+// toast
+const toast = m => { const t = $('#ts'); t.textContent = m; t.classList.add('on'); setTimeout(() => t.classList.remove('on'), 1800); };
+$('#cp').onclick = async () => {
+  try { await navigator.clipboard.writeText(EMAIL); }
+  catch { const i = document.createElement('input'); i.value = EMAIL; document.body.appendChild(i); i.select(); document.execCommand('copy'); i.remove(); }
+  toast('Copied!');
+};
+
+// request form
+$('#f').onsubmit = e => {
+  e.preventDefault();
+  const msg = `Hi Areesha! I just requested a free demo preview.\n\nBusiness: ${$('#bn').value}\nPackage: ${$('#pk').value}\nInstagram / Maps: ${$('#ln').value}\nContact: ${$('#ct').value}`;
+  $('#wa').href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  $('#f').style.display = 'none'; $('#ok').style.display = 'block'; $('#f').reset();
+};
+
+// process tabs
+const tabs = $$('[role=tab]');
+const pick = n => { tabs.forEach((t, i) => { t.setAttribute('aria-selected', i === n); t.tabIndex = i === n ? 0 : -1; $('#p' + i).classList.toggle('on', i === n); }); $('#pb').style.width = (n + 1) * 25 + '%'; };
+tabs.forEach((t, i) => { t.onclick = () => pick(i); t.onkeydown = e => { const d = { ArrowRight: 1, ArrowLeft: -1 }[e.key]; if (d) { const n = (i + d + 4) % 4; pick(n); tabs[n].focus(); } }; });
+
+// mobile menu
+$('#mb').onclick = () => { const o = $('#menu').classList.toggle('open'); $('#mb').setAttribute('aria-expanded', o); $('#mb').textContent = o ? 'CLOSE ✕' : 'MENU ☰'; };
+$$('#menu a').forEach(a => a.onclick = () => { $('#menu').classList.remove('open'); $('#mb').textContent = 'MENU ☰'; });
+</script>
+</body>
+</html>
